@@ -1,0 +1,247 @@
+﻿<Window x:Class="ExamManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExamManager"
+        Icon="Image/home1.png" 
+        
+     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
+         
+        DataContext="{StaticResource MainVM}"
+        x:Name="mainWindow"
+        WindowStyle="None"
+        mc:Ignorable="d"
+        Title="Main Window" 
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Height="700" Width="1100">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedWindowCommand}" CommandParameter="{Binding ElementName=mainWindow}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+
+    <Window.Resources>
+        <Style x:Key="SlideGrid" TargetType="Canvas">
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ThicknessAnimation Duration="0:0:0.1" Storyboard.TargetProperty="Margin" To="0 0 0 0"></ThicknessAnimation>
+
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ThicknessAnimation Duration="0:0:0.1" Storyboard.TargetProperty="Margin" To="-125 0 0 0"></ThicknessAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Border BorderThickness="2" BorderBrush="#FF4C3699">
+        <Grid >
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF7CFFF3" Offset="0"/>
+                    <GradientStop Color="#FFFBD0D0" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition  />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Height="40">
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF043370" Offset="0"/>
+                        <GradientStop Color="#FFB0E1F3" Offset="0.502"/>
+                        <GradientStop Color="#FF043370" Offset="0.976"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Button Width="25" Height="25" HorizontalAlignment="Right" 
+                        Margin="0 0 10 0" Background="{x:Null}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding CloseApplicationCommand}" CommandParameter="{Binding ElementName=mainWindow}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+                <materialDesign:PackIcon  Kind="Shutdown" Width="25" Height="25" 
+                                     HorizontalAlignment="Right" VerticalAlignment="Center"  
+                                     Margin="0 0 10 0"  
+                                     >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseDown">
+                            <i:InvokeCommandAction Command="{Binding CloseApplicationCommand}" CommandParameter="{Binding ElementName=mainWindow}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </materialDesign:PackIcon>
+
+
+            </Grid>
+            <Grid Grid.Row="1" >
+
+                <Grid x:Name="mainGrid"  Margin="80 10 10 10">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Loaded">
+                            <i:InvokeCommandAction Command="{Binding LoadMainGridCommand}" CommandParameter="{Binding ElementName=mainGrid}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+
+                </Grid>
+
+                <Canvas x:Name="gridMenu"
+                        
+                    HorizontalAlignment="Left" 
+                    Grid.RowSpan="2" 
+                    Margin="-125 0 0 0 " 
+                    Style="{StaticResource SlideGrid}">
+
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Loaded">
+                            <i:InvokeCommandAction Command="{Binding LoadMenuCommand}" CommandParameter="{Binding ElementName=listVeiwMenu}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    
+                    <Rectangle Width="200" Height="655"  >
+                        <Rectangle.Fill>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF021C63"/>
+                                <GradientStop Color="#FF13BFBD" Offset="0.542"/>
+                                <GradientStop Color="#FF021C63" Offset="0.968"/>
+                            </LinearGradientBrush>
+                        </Rectangle.Fill>
+                    </Rectangle>
+
+                    <ListView x:Name="listVeiwMenu" Foreground="White" Width="200" 
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding LoadGridSeclectedCommand}" CommandParameter="{Binding ElementName=gridSeclected}"></i:InvokeCommandAction>
+                                <i:InvokeCommandAction Command="{Binding SelectionChangedCommand}" CommandParameter="{Binding ElementName=listVeiwMenu}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+
+                        <ListView.Resources>
+                            <Style TargetType="Grid">
+                                <Setter Property="Width" Value="180"></Setter>
+                            </Style>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="Height" Value="70"></Setter>
+
+                            </Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Width" Value="110"></Setter>
+                                <Setter Property="FontSize" Value="20"></Setter>
+                                <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+                                <Setter Property="Margin" Value="0 10"></Setter>
+                                <Setter Property="TextWrapping" Value="WrapWithOverflow"></Setter>
+                            </Style>
+                            <Style TargetType="materialDesign:PackIcon">
+                                <Setter Property="Width" Value="50"></Setter>
+                                <Setter Property="Height" Value="50"></Setter>
+                                <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+                                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                            </Style>
+                        </ListView.Resources>
+                        <ListViewItem x:Name="item1" HorizontalAlignment="Stretch">
+                            <Grid>
+
+                                <TextBlock Text="Trang chủ" >
+                                </TextBlock>
+                                <materialDesign:PackIcon Kind="Home" />
+
+                            </Grid>
+                        </ListViewItem>
+
+
+
+                        <ListViewItem x:Name="item2" >
+                            <Grid >
+                                <TextBlock Text="Người dùng"  >
+                                </TextBlock>
+                                <materialDesign:PackIcon Kind="Information" />
+
+                            </Grid>
+                        </ListViewItem>
+                        <ListViewItem x:Name="item3" >
+                            <Grid >
+                                <TextBlock Text="Kết quả" >
+                                </TextBlock>
+                                <materialDesign:PackIcon Kind="NoteOutline" />
+
+                            </Grid>
+                        </ListViewItem>
+                        <ListViewItem x:Name="item4" >
+                            <Grid >
+                                <TextBlock Text="Thí sinh" >
+                                </TextBlock>
+                                <materialDesign:PackIcon Kind="HumanMaleHeight" />
+
+                            </Grid>
+                        </ListViewItem>
+                        <ListViewItem x:Name="item5">
+                            <Grid >
+                                <TextBlock Text="Môn học" >
+                                </TextBlock>
+                                <materialDesign:PackIcon Kind="AcademicCap" />
+
+                            </Grid>
+                        </ListViewItem>
+                        <ListViewItem x:Name="item6" >
+                            <Grid >
+                                <TextBlock Text="Bài thi" >
+                                </TextBlock>
+                                <materialDesign:PackIcon Kind="BookAdd" />
+
+                            </Grid>
+                        </ListViewItem>
+                        <ListViewItem x:Name="item7" >
+                            <Grid>
+                                <TextBlock Text="Khác" >
+                                </TextBlock>
+                                <materialDesign:PackIcon Kind="QuestionMark" />
+
+                            </Grid>
+                        </ListViewItem>
+
+                    </ListView>
+                </Canvas>
+                <Grid HorizontalAlignment="Left" x:Name="gridSeclected"
+                        VerticalAlignment="Top"
+                        Width="4" Height="66" Background="Aquamarine" Margin="0 0 0 0">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Loaded">
+                            <i:InvokeCommandAction Command="{Binding LoadGridSeclectedCommand}" CommandParameter="{Binding ElementName=gridSeclected}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Grid>
+
+
+
+            </Grid>
+        </Grid>
+    </Border>
+
+
+</Window>

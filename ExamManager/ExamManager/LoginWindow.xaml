@@ -1,0 +1,144 @@
+﻿<Window x:Class="ExamManager.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExamManager"
+       
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
+      
+        DataContext="{StaticResource LoginVM}"
+        
+        WindowStartupLocation="Manual"
+        Left="500" Top="20"
+        WindowStyle="None"
+        Name="loginWindow"
+        ResizeMode="noResize"
+        Icon="Image/home1.png" 
+        Title="Login Window" Height="500" Width="350"
+        >
+    
+    <Border BorderBrush="Aqua" BorderThickness="2">
+        <Grid>
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFE3E3FB" Offset="0.719"/>
+                    <GradientStop Color="#FF2020B9" Offset="0.365"/>
+                    <GradientStop Color="#FF4CB1EC"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+
+            <Rectangle Fill="White" RadiusY="22" RadiusX="22" Width="270" Height="200" Margin="34,221,42,75">
+                <Rectangle.Effect>
+                    <DropShadowEffect Color="#FFBBBBBB" Direction="0" BlurRadius="15" RenderingBias="Quality" ShadowDepth="1"/>
+                </Rectangle.Effect>
+            </Rectangle>
+            <TextBlock 
+                Width="150" Height="50" Text="Login"
+                FontSize="40" 
+                TextAlignment="Center"
+                HorizontalAlignment="Center" 
+                FontFamily=".VnTeknical" Margin="94,219,102,227" 
+                FontWeight="Bold"/>
+
+            <Grid 
+            HorizontalAlignment="Center"  
+            Width="250" Height="156" Margin="48,262,48,78" >
+                <Grid >
+                    <Grid.Resources>
+                        <Style TargetType="Grid">
+                            <Setter Property="Margin" Value="10 7 10 17"></Setter>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <TextBox  x:Name="tbusername" 
+                                  Text="{Binding UserName}"
+                        materialDesign:HintAssist.Hint="User" 
+                        FontWeight="Bold"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction Command="{Binding LoadWarningCommand}" ></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                        <PasswordBox x:Name="tbpassword" 
+                        FontWeight="Bold"
+                        materialDesign:HintAssist.Hint="Password"
+                        Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"  >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="PasswordChanged">
+                                    <i:InvokeCommandAction Command="{Binding LoadWarningCommand}" ></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </PasswordBox>
+                        
+                    </Grid>
+                    <TextBlock Visibility="{Binding TbWarning , UpdateSourceTrigger=PropertyChanged}"
+                        x:Name="tbWarning"
+                        TextAlignment="Center"
+                        FontSize="10" Foreground="Red"
+                        Text="Sai tài khoản hoặc mật khẩu"
+                        Width="200" Height="20" 
+                        Margin="15,54,15,-8" Grid.Row="1">
+                             
+                    </TextBlock>
+
+                </Grid>
+            </Grid>
+            <Button 
+                 Content="Login"
+                Width="80" Height="35" 
+                IsDefault="True" Margin="75,410,191,51" >
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFE09CF9" Offset="0"/>
+                        <GradientStop Color="#FF72079B" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}" CommandParameter="{Binding ElementName=tbpassword}"></i:InvokeCommandAction>
+
+                        <i:InvokeCommandAction Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=loginWindow}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+
+            <Button 
+                Content="Exit"
+                Width="80" Height="35" Margin="187,409,79,52" >
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFF3B7A0" Offset="0"/>
+                        <GradientStop Color="#FFB93808" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding CloseApplicationCommand}" CommandParameter="{Binding ElementName=loginWindow}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Image Source="Image/home1.png" Width="140" Height="140" Margin="103,32,103,324" ></Image>
+        </Grid>
+    </Border>
+
+</Window>

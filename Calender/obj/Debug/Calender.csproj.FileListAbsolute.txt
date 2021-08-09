@@ -1,0 +1,8 @@
+D:\App\visual studio\Project\Calender\obj\Debug\Calender.Properties.Resources.resources
+D:\App\visual studio\Project\Calender\obj\Debug\Calender.csproj.GenerateResource.cache
+D:\App\visual studio\Project\Calender\obj\Debug\Calender.csproj.CoreCompileInputs.cache
+D:\App\visual studio\Project\Calender\bin\Debug\Calender.exe.config
+D:\App\visual studio\Project\Calender\bin\Debug\Calender.exe
+D:\App\visual studio\Project\Calender\bin\Debug\Calender.pdb
+D:\App\visual studio\Project\Calender\obj\Debug\Calender.exe
+D:\App\visual studio\Project\Calender\obj\Debug\Calender.pdb

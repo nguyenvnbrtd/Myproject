@@ -1,0 +1,207 @@
+﻿<UserControl x:Class="ExamManager.UserControlEM.Home"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ExamManager.UserControlEM"
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+           xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+          
+                  TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
+             
+             DataContext="{StaticResource HomeVM}"
+             
+             Height="auto" Width="auto">
+    <UserControl.Resources>
+        <Style x:Key="GridButton" TargetType="Grid">
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard >
+
+                                <DoubleAnimation  Duration="0:0:0.100" Storyboard.TargetProperty="Width" To="190"></DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+
+                                <DoubleAnimation Duration="0:0:0.100" Storyboard.TargetProperty="Width" To="180"></DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseDown" >
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0" Storyboard.TargetProperty="Width" To="180"></DoubleAnimation>
+                                <DoubleAnimation  Duration="0:0:0.100" Storyboard.TargetProperty="Width" To="190"></DoubleAnimation>
+
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Style.Triggers>
+            <Setter Property="Width" Value="180"></Setter>
+            <Setter Property="Height" Value="auto"></Setter>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Width" Value="130"></Setter>
+            <Setter Property="Height" Value="130"></Setter>
+            <Setter Property="FontSize" Value="15"></Setter>
+        </Style>
+    </UserControl.Resources>
+    
+    <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromRight, Duration=0:0:0.2}">
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="Loaded">
+                <i:InvokeCommandAction Command="{Binding LoadWindowCommand}" CommandParameter="{Binding ElementName=mainGrid}" ></i:InvokeCommandAction>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
+        <Grid x:Name="mainGrid" >
+            <Grid.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                    <Setter Property="Width" Value="180"></Setter>
+                </Style>
+            </Grid.Resources>
+            <Image Source="../Image/chalkboard.png" Width="900"></Image>
+            
+            <Grid x:Name="gr1"  Margin="198,118,582,304" Style="{StaticResource GridButton}">
+                
+                <Image Source="../Image/1.png" 
+                    >
+                </Image>
+                <TextBlock  Text="{Binding Ex1}"
+                RenderTransformOrigin="0.5,0.5" Margin="20,29,25,27" Width="130" Height="130">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="7.516"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                    
+                </TextBlock>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:InvokeCommandAction Command="{Binding OpenExamCommand}"  CommandParameter="{Binding ElementName=gr1}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Grid>
+
+            <Grid x:Name="gr2" Margin="382,140,398,302" Style="{StaticResource GridButton}">
+                <Image Source="../Image/2.png"  
+                   >
+                </Image>
+                <TextBlock Text="{Binding Ex2}"  RenderTransformOrigin="0.5,0.5" Width="130" Height="130">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-9.035"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform></TextBlock>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:InvokeCommandAction Command="{Binding OpenExamCommand}" CommandParameter="{Binding ElementName=gr2}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Grid>
+            
+            <Grid x:Name="gr3" Style="{StaticResource GridButton}" Margin="554,126,226,314">
+                <Image Source="../Image/3.png">
+                </Image>
+                <TextBlock Text="{Binding Ex3}" Width="130" Height="130"
+                RenderTransformOrigin="0.5,0.5">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-9.035"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform></TextBlock>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:InvokeCommandAction Command="{Binding OpenExamCommand}" CommandParameter="{Binding ElementName=gr3}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Grid>
+            
+            <Grid x:Name="gr4" Style="{StaticResource GridButton}"  Margin="206,306,574,112">
+                <Image Source="../Image/4.png" >
+                </Image>
+                <TextBlock Text="{Binding Ex4}" Width="130" Height="130"
+                RenderTransformOrigin="0.5,0.5">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="5.811"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform></TextBlock>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:InvokeCommandAction Command="{Binding OpenExamCommand}" CommandParameter="{Binding ElementName=gr4}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Grid>
+
+            <Grid x:Name="gr5" Style="{StaticResource GridButton}" Margin="390,298,390,134" >
+                <Image Source="../Image/5.png">
+                </Image>
+                <TextBlock Text="{Binding Ex5}" Width="130" Height="130"
+                RenderTransformOrigin="0.5,0.5">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-9.298"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform></TextBlock>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:InvokeCommandAction Command="{Binding OpenExamCommand}" CommandParameter="{Binding ElementName=gr5}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Grid>
+
+            <Grid x:Name="gr6" Style="{StaticResource GridButton}" Margin="570,280,210,132" >
+                <Image Source="../Image/6.png" >
+                </Image>
+                <TextBlock Text="{Binding Ex6}"  Width="130" Height="130"
+                RenderTransformOrigin="0.5,0.5">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="1.902"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform></TextBlock>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:InvokeCommandAction Command="{Binding OpenExamCommand}" CommandParameter="{Binding ElementName=gr6}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Grid>
+            
+        </Grid>
+    </materialDesign:TransitioningContent>
+</UserControl>

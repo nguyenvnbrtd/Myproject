@@ -1,0 +1,38 @@
+﻿<Application x:Class="ExamManager.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ExamManager"
+             xmlns:viewmodel="clr-namespace:ExamManager.ViewModel" 
+             StartupUri="MainWindow.xaml" >
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+
+            <viewmodel:OtherControlVM x:Key="OtherVM"></viewmodel:OtherControlVM>
+            <viewmodel:ExamingControlVM x:Key="ExamingControlVM"></viewmodel:ExamingControlVM>
+            <viewmodel:ExamingVM x:Key="ExamingVM"></viewmodel:ExamingVM>
+            <viewmodel:AddSubjectVM x:Key="AddSubjectVM" ></viewmodel:AddSubjectVM>
+            <viewmodel:ExamVM x:Key="ExamVM"></viewmodel:ExamVM>
+            <viewmodel:LoginWindowVM x:Key="LoginVM"></viewmodel:LoginWindowVM>
+            <viewmodel:AddExamVM x:Key="AddVM"></viewmodel:AddExamVM>
+            <viewmodel:AddingExamVM x:Key="AddingVM"></viewmodel:AddingExamVM>
+            <viewmodel:CandidateVM x:Key="CandidateVM"></viewmodel:CandidateVM>
+            <viewmodel:HomeVM x:Key="HomeVM"></viewmodel:HomeVM>
+            <viewmodel:ListCandidateVM x:Key="ListCandidateVM"></viewmodel:ListCandidateVM>
+            <viewmodel:ResultVM x:Key="ResultVM"></viewmodel:ResultVM>
+            <viewmodel:SubjectVM x:Key="SubjectVM"></viewmodel:SubjectVM>
+            <viewmodel:AllExamWindowVM x:Key="AllExamVM"></viewmodel:AllExamWindowVM>
+            <viewmodel:MainWindowVM x:Key="MainVM"></viewmodel:MainWindowVM>
+            
+        </ResourceDictionary>
+        
+    </Application.Resources>
+    
+    
+</Application>

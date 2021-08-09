@@ -1,0 +1,137 @@
+﻿<UserControl x:Class="ExamManager.UserControlEM.ListCandidate"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ExamManager.UserControlEM"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        
+                  TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
+             
+             DataContext="{StaticResource ListCandidateVM}"
+            
+             Height="auto" Width="auto">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadWindowCommand}" ></i:InvokeCommandAction>
+
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <materialDesign:TransitioningContent x:Name="transitionSelected" OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromRight, Duration=0:0:0.2}" Height="543" Width="821">
+        <Canvas Background="{x:Null}" Margin="3,3,1,0">
+            <Image Source="../Image/info-3.png" Stretch="Uniform" Width="326" 
+                   Canvas.Left="24" Canvas.Top="11"/>
+            <TextBox Text="{Binding Name}"
+                 materialDesign:HintAssist.Hint="Họ tên" MinWidth="180"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                Canvas.Left="100" Canvas.Top="150" />
+            <ComboBox ItemsSource="{Binding ListGender, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Gender}" 
+                 materialDesign:HintAssist.Hint="Giới tính" MinWidth="180"
+                 Canvas.Left="100" Canvas.Top="190"
+                 Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+            </ComboBox>
+
+            <DatePicker
+                x:Name="BirthDay" SelectedDate="{Binding BirthDay, StringFormat='dd-MM-yyyy' }"
+                MinWidth="180" materialDesign:HintAssist.Hint="Ngày sinh" Canvas.Left="100" Canvas.Top="230" 
+                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+
+            <TextBox Text="{Binding PhoneNumber}"
+                 materialDesign:HintAssist.Hint="Điện thoại" MinWidth="180"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                Canvas.Left="100" Canvas.Top="270" />
+            <TextBox Text="{Binding Job}"
+                 materialDesign:HintAssist.Hint="Công việc" MinWidth="180"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                Canvas.Left="100" Canvas.Top="310" />
+            <ComboBox Text="{Binding Permission}"
+                 materialDesign:HintAssist.Hint="Quyền" MinWidth="180"
+                 Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
+                 Canvas.Left="100" Canvas.Top="350" >
+                <ComboBoxItem>1</ComboBoxItem>
+                <ComboBoxItem>2</ComboBoxItem>
+                <ComboBoxItem>3</ComboBoxItem>
+            </ComboBox>
+
+            <TextBox Text="{Binding MoreInfo}"
+                 materialDesign:HintAssist.Hint="Thông tin khác" Width="180" TextWrapping="Wrap"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                Canvas.Left="100" Canvas.Top="390" />
+            <TextBlock Visibility="{Binding Visibility}" FontSize="10" Foreground="Green" Canvas.Left="134" Canvas.Top="484" >Sữa thông tin thành công</TextBlock>
+            <TextBlock Visibility="{Binding Visibility1}" FontSize="10" Foreground="Green" Canvas.Left="134" Canvas.Top="484" >Thêm người dùng thành công</TextBlock>
+
+            <Button Height="26" Width="80" Canvas.Left="58" Canvas.Top="516">
+                Thêm
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding AddUserCommand}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="LostFocus">
+                        <i:InvokeCommandAction Command="{Binding AddWarningCommand}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Height="26" Width="80" Canvas.Left="144" Canvas.Top="516">
+                Sửa
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding EditInfoCommand}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="LostFocus">
+                        <i:InvokeCommandAction Command="{Binding WarningCommand}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Height="26" Width="80" Canvas.Left="230" Canvas.Top="516">
+                Xóa
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding DeleteUserCommand}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <materialDesign:Card Padding="10" VerticalAlignment="Stretch" Canvas.Left="379" Canvas.Top="126" Width="425" Height="370">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="2,0">
+                    <ListView ItemsSource="{Binding List}" SelectedItem="{Binding SelectedUser}" Height="350" Width="404">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Id" Width="auto" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
+                                <GridViewColumn Header="Họ tên" Width="auto" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
+                                <GridViewColumn Header="Giới tính" Width="auto" DisplayMemberBinding="{Binding Gender}"></GridViewColumn>
+                                <GridViewColumn Header="Quyền" Width="auto" DisplayMemberBinding="{Binding Permission}"></GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding SelectionChangedCommand}" ></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ListView>
+                </ScrollViewer>
+
+            </materialDesign:Card>
+            <Border BorderThickness="2" Canvas.Left="377" Canvas.Top="58" BorderBrush="#FFCDCDCD">
+                <Expander Header="Tài khoản và mật khẩu"  Width="424" FontSize="15" Background="White">
+                    <Grid Width="400" Height="180" >
+                        <TextBox Text="{Binding UserName}" Width="350" Height="50"
+                         materialDesign:HintAssist.Hint="Tài khoản"  TextWrapping="Wrap"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="21,23,29,107"/>
+                        <TextBox Text="{Binding PassWord}" Width="350" Height="50"
+                         materialDesign:HintAssist.Hint="Mật khẩu" TextWrapping="Wrap"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Margin="21,103,29,27"/>
+                    </Grid>
+                </Expander>
+            </Border>
+
+        </Canvas>
+    </materialDesign:TransitioningContent>
+
+</UserControl>

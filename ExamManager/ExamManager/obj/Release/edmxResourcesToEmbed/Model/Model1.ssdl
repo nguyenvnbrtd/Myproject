@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ExamManagerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuizId" Type="int" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" />
+    <Property Name="IsCorrect" Type="int" />
+  </EntityType>
+  <EntityType Name="ExamInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuizListId" Type="int" Nullable="false" />
+    <Property Name="DayOpen" Type="date" />
+    <Property Name="DayEnd" Type="date" />
+    <Property Name="Duration" Type="int" />
+    <Property Name="Ispublic" Type="int" />
+  </EntityType>
+  <EntityType Name="Quiz">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuizListId" Type="int" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="QuizList">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubjectsId" Type="int" />
+    <Property Name="NameList" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Subjects">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubjectName" Type="nvarchar(max)" />
+    <Property Name="Descriptions" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="UserExam">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="ExamInfoId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="ExamInfoId" Type="int" Nullable="false" />
+    <Property Name="ExamPoint" Type="float" />
+    <Property Name="TimeEntry" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PassWord" Type="nvarchar(max)" />
+    <Property Name="Permission" Type="int" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="10" />
+    <Property Name="BirthDay" Type="date" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="20" />
+    <Property Name="Job" Type="nvarchar(max)" />
+    <Property Name="MoreInfo" Type="nvarchar(max)" />
+    <Property Name="UserName" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK__Answer__QuizId__1A14E395">
+    <End Role="Quiz" Type="Self.Quiz" Multiplicity="1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Quiz">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="QuizId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ExamInfo__QuizLi__1CF15040">
+    <End Role="QuizList" Type="Self.QuizList" Multiplicity="1" />
+    <End Role="ExamInfo" Type="Self.ExamInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuizList">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ExamInfo">
+        <PropertyRef Name="QuizListId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Quiz__Content__173876EA">
+    <End Role="QuizList" Type="Self.QuizList" Multiplicity="1" />
+    <End Role="Quiz" Type="Self.Quiz" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuizList">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Quiz">
+        <PropertyRef Name="QuizListId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__QuizList__NameLi__145C0A3F">
+    <End Role="Subjects" Type="Self.Subjects" Multiplicity="0..1" />
+    <End Role="QuizList" Type="Self.QuizList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subjects">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QuizList">
+        <PropertyRef Name="SubjectsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserExam__ExamIn__20C1E124">
+    <End Role="ExamInfo" Type="Self.ExamInfo" Multiplicity="1" />
+    <End Role="UserExam" Type="Self.UserExam" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExamInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserExam">
+        <PropertyRef Name="ExamInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserExam__UserId__1FCDBCEB">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="UserExam" Type="Self.UserExam" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserExam">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ExamManagerModelStoreContainer">
+    <EntitySet Name="Answer" EntityType="Self.Answer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExamInfo" EntityType="Self.ExamInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Quiz" EntityType="Self.Quiz" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QuizList" EntityType="Self.QuizList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserExam" EntityType="Self.UserExam" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Answer__QuizId__1A14E395" Association="Self.FK__Answer__QuizId__1A14E395">
+      <End Role="Quiz" EntitySet="Quiz" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ExamInfo__QuizLi__1CF15040" Association="Self.FK__ExamInfo__QuizLi__1CF15040">
+      <End Role="QuizList" EntitySet="QuizList" />
+      <End Role="ExamInfo" EntitySet="ExamInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Quiz__Content__173876EA" Association="Self.FK__Quiz__Content__173876EA">
+      <End Role="QuizList" EntitySet="QuizList" />
+      <End Role="Quiz" EntitySet="Quiz" />
+    </AssociationSet>
+    <AssociationSet Name="FK__QuizList__NameLi__145C0A3F" Association="Self.FK__QuizList__NameLi__145C0A3F">
+      <End Role="Subjects" EntitySet="Subjects" />
+      <End Role="QuizList" EntitySet="QuizList" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserExam__ExamIn__20C1E124" Association="Self.FK__UserExam__ExamIn__20C1E124">
+      <End Role="ExamInfo" EntitySet="ExamInfo" />
+      <End Role="UserExam" EntitySet="UserExam" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserExam__UserId__1FCDBCEB" Association="Self.FK__UserExam__UserId__1FCDBCEB">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserExam" EntitySet="UserExam" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

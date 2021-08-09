@@ -1,0 +1,20 @@
+﻿ExamManager
+
+
+winexe
+C#
+.cs
+D:\App\visual studio\Project\Myproject\ExamManager\ExamManager\obj\Debug\
+ExamManager
+none
+false
+DEBUG;TRACE
+D:\App\visual studio\Project\Myproject\ExamManager\ExamManager\App.xaml
+161570703184
+2-1556844510
+49-1230004187
+23-479991873
+AddingWindow.xaml;AddSubject.xaml;AllExamWindow.xaml;ExamInfo.xaml;Examing.xaml;LoginWindow.xaml;MainWindow.xaml;UserControlEM\AddExam.xaml;UserControlEM\Candidate.xaml;UserControlEM\ExamingLeft.xaml;UserControlEM\ExamingRight.xaml;UserControlEM\Home.xaml;UserControlEM\ListCandidate.xaml;UserControlEM\OtherControl.xaml;UserControlEM\Result.xaml;UserControlEM\Subject.xaml;
+
+True
+

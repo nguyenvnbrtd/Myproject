@@ -1,0 +1,10 @@
+D:\App\visual studio\Project\WirelessAutoAccess\bin\Debug\WirelessAutoAccess.exe.config
+D:\App\visual studio\Project\WirelessAutoAccess\bin\Debug\WirelessAutoAccess.exe
+D:\App\visual studio\Project\WirelessAutoAccess\bin\Debug\WirelessAutoAccess.pdb
+D:\App\visual studio\Project\WirelessAutoAccess\obj\Debug\WirelessAutoAccess.csprojAssemblyReference.cache
+D:\App\visual studio\Project\WirelessAutoAccess\obj\Debug\WirelessAutoAccess.Form1.resources
+D:\App\visual studio\Project\WirelessAutoAccess\obj\Debug\WirelessAutoAccess.Properties.Resources.resources
+D:\App\visual studio\Project\WirelessAutoAccess\obj\Debug\WirelessAutoAccess.csproj.GenerateResource.cache
+D:\App\visual studio\Project\WirelessAutoAccess\obj\Debug\WirelessAutoAccess.csproj.CoreCompileInputs.cache
+D:\App\visual studio\Project\WirelessAutoAccess\obj\Debug\WirelessAutoAccess.exe
+D:\App\visual studio\Project\WirelessAutoAccess\obj\Debug\WirelessAutoAccess.pdb

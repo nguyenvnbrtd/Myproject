@@ -1,0 +1,43 @@
+﻿<Window x:Class="MVVM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVM"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
+        
+        DataContext="{StaticResource MainVM}"
+        
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    
+        <materialDesign:Card>
+            <Canvas Height="500">
+
+                <Button x:Name="btn1" Content="Click" FontSize="50"  Width="200" Height="100" Margin="263,6,329,394">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding Abc}" CommandParameter="{Binding ElementName=rect1}"></i:InvokeCommandAction>
+                        <i:InvokeCommandAction Command="{Binding Bcd}" CommandParameter="{Binding ElementName=btn1}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+
+                </Button>
+                
+            
+                <Rectangle x:Name="rect1" Width="200" Height="200" Fill="Black" Margin="263,183,329,117"></Rectangle>
+            
+                
+            </Canvas>   
+        </materialDesign:Card>
+   
+</Window>

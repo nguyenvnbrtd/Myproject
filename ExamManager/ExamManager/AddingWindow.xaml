@@ -1,0 +1,190 @@
+﻿<Window x:Class="ExamManager.AddingWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ExamManager.UserControlEM"
+            
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:materialDesign1="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             Icon="Image/oen1.png" 
+        
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
+       WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="noResize"
+        Title="Adding Window"
+        x:Name="addingwindow"
+        DataContext="{StaticResource AddingVM}" 
+        Height="725" Width="1120" >
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadWindowCommand}" ></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Border BorderBrush="Aqua" BorderThickness="2">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="13*"/>
+                <ColumnDefinition Width="1103*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF1A7FB8" Offset="0"/>
+                    <GradientStop Color="#FFDADADA" Offset="0.5"/>
+                    <GradientStop Color="#FF2E89D6" Offset="0.988"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <materialDesign:Card Grid.Row="0"  Margin="2,10,15,0" Grid.Column="1">
+                <Grid >
+                    <TextBox Text="{Binding ExamName}"
+                       Margin="30,45,765,50"  
+                        TextWrapping="Wrap"
+                        materialDesign:HintAssist.Hint="Bài thi" 
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"  />
+                    <ComboBox  DisplayMemberPath="SubjectName" ItemsSource="{Binding SubjectList}" SelectedItem="{Binding Subject}"
+                        Margin="350,45,520,50"  
+                        materialDesign:HintAssist.Hint="Môn học" Height="36"  />
+                    <TextBox Text="{Binding Duration}"
+                        ToolTip="Phút"
+                        VerticalAlignment="Center" 
+                        Margin="855,45,40,50" 
+                        TextWrapping="Wrap"
+                        materialDesign:HintAssist.Hint="Thời lượng" 
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"  />
+                    <DatePicker materialDesign:HintAssist.Hint="Mở từ" SelectedDate="{Binding DayOpen}" 
+                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}" 
+                        Margin="600,45,390,50" />
+                    <DatePicker materialDesign:HintAssist.Hint="Đến ngày" SelectedDate="{Binding DayEnd}" 
+                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}" 
+                        Margin="725,45,265,50" />
+                </Grid>
+            </materialDesign:Card>
+
+
+            <Grid Grid.Row="1" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="350"></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <materialDesign:Card  Margin="15,10,15,0" Grid.Column="0" Height="549">
+                    <Grid >
+                        <TextBox   Text="{Binding Question}"
+                            VerticalAlignment="Top" Margin="28,20,28,0"
+                            TextWrapping="Wrap"
+                            materialDesign:HintAssist.Hint="Câu hỏi" 
+                            MaxLines="4"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"  />
+                        <TextBox Text="{Binding Answer1}"
+                            MaxLines="2"
+                            VerticalAlignment="Top" Margin="62,110,28,0"
+                            TextWrapping="Wrap"
+                            materialDesign:HintAssist.Hint="1." 
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"  />
+                        <TextBox Text="{Binding Answer2}"
+                            MaxLines="2"
+                            VerticalAlignment="Top" Margin="62,170,28,0"
+                            TextWrapping="Wrap"
+                            materialDesign:HintAssist.Hint="2." 
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"  />
+                        <TextBox Text="{Binding Answer3}"
+                            MaxLines="2"
+                            VerticalAlignment="Top" Margin="62,230,28,0"
+                            TextWrapping="Wrap"
+                            materialDesign:HintAssist.Hint="3." 
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"  />
+                        <TextBox Text="{Binding Answer4}"
+                            MaxLines="2"
+                            VerticalAlignment="Top" Margin="62,290,28,0"
+                            TextWrapping="Wrap"
+                            materialDesign:HintAssist.Hint="4." 
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"  />
+                        <RadioButton Width="auto" Height="auto" IsChecked="{Binding CbAnswer1}"
+                                          Margin="28,124,274,404"></RadioButton>
+                        <RadioButton Width="auto" Height="auto" IsChecked="{Binding CbAnswer2}"
+                                          Margin="28,186,274,344"></RadioButton>
+                        <RadioButton Width="auto" Height="auto" IsChecked="{Binding CbAnswer3}"
+                                          Margin="28,246,274,285"></RadioButton>
+                        <RadioButton Width="auto" Height="auto" IsChecked="{Binding CbAnswer4}"
+                                          Margin="28,306,274,225"></RadioButton>
+                        <Grid Margin="50,380,50,78">
+                            <Button Width="100" Margin="0,12,121,0" VerticalAlignment="Top" IsDefault="True" >Thêm
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding AddQuestionCommand}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                            <Button Width="100" Margin="120,12,1,0" VerticalAlignment="Top">Sửa
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding EditQuestionCommand}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                            <Button Width="100" Margin="60,63,61,-4">Xóa
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding DeleteQuestionCommand}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+
+
+                        </Grid>
+
+
+                    </Grid>
+                </materialDesign:Card>
+
+                <materialDesign:Card Grid.Column="1" Margin="15 10 15 10" Padding="10" Width="735" Height="550">
+                    <Grid>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,0,0,63">
+                            <ListView   ItemsSource="{Binding List}" SelectedItem="{Binding SelectedQuiz}"   >
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Câu hỏi" Width="450" DisplayMemberBinding="{Binding question}"></GridViewColumn>
+
+                                    </GridView>
+                                </ListView.View>
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectionChanged">
+                                        <i:InvokeCommandAction Command="{Binding SelectionChangedCommand}" ></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </ListView>
+                        </ScrollViewer>
+                        <Button Width="150" VerticalAlignment="Bottom" Margin="180,0,365,15">Hoàn tất
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding CompletedCommand}" CommandParameter="{Binding ElementName=addingwindow}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                        <Button Width="150" VerticalAlignment="Bottom" Margin="350,0,180,15" >Hủy
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding CloseWindowCommand}" CommandParameter="{Binding ElementName=addingwindow}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Grid>
+
+                </materialDesign:Card>
+            </Grid>
+        </Grid>
+    </Border>
+
+</Window>
+

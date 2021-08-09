@@ -1,0 +1,15 @@
+D:\App\visual studio\Project\Myproject\CNPM\QLSV\bin\Debug\QLSV.exe.config
+D:\App\visual studio\Project\Myproject\CNPM\QLSV\bin\Debug\QLSV.exe
+D:\App\visual studio\Project\Myproject\CNPM\QLSV\bin\Debug\QLSV.pdb
+D:\App\visual studio\Project\Myproject\CNPM\QLSV\obj\Debug\QLSV.csprojAssemblyReference.cache
+D:\App\visual studio\Project\Myproject\CNPM\QLSV\obj\Debug\QLSV.Form1.resources
+D:\App\visual studio\Project\Myproject\CNPM\QLSV\obj\Debug\QLSV.Properties.Resources.resources
+D:\App\visual studio\Project\Myproject\CNPM\QLSV\obj\Debug\QLSV.csproj.GenerateResource.cache
+D:\App\visual studio\Project\Myproject\CNPM\QLSV\obj\Debug\QLSV.csproj.CoreCompileInputs.cache
+D:\App\visual studio\Project\Myproject\CNPM\QLSV\obj\Debug\QLSV.exe
+D:\App\visual studio\Project\Myproject\CNPM\QLSV\obj\Debug\QLSV.pdb
+D:\App\visual studio\Project\Myproject\CNPM\QLSV\bin\Debug\EntityFramework.dll
+D:\App\visual studio\Project\Myproject\CNPM\QLSV\bin\Debug\EntityFramework.SqlServer.dll
+D:\App\visual studio\Project\Myproject\CNPM\QLSV\bin\Debug\EntityFramework.xml
+D:\App\visual studio\Project\Myproject\CNPM\QLSV\bin\Debug\EntityFramework.SqlServer.xml
+D:\App\visual studio\Project\Myproject\CNPM\QLSV\obj\Debug\QLSV.csproj.CopyComplete

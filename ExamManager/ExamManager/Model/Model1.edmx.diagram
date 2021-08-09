@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a1d929ab487746e4b4f39ee8a547df55" Name="Diagram1">
+        <EntityTypeShape EntityType="ExamManagerModel.Answer" Width="1.5" PointX="7.5" PointY="1.125" />
+        <EntityTypeShape EntityType="ExamManagerModel.ExamInfo" Width="1.5" PointX="5.25" PointY="3.875" />
+        <EntityTypeShape EntityType="ExamManagerModel.Quiz" Width="1.5" PointX="5.25" PointY="1.125" />
+        <EntityTypeShape EntityType="ExamManagerModel.QuizList" Width="1.5" PointX="3" PointY="2.625" />
+        <EntityTypeShape EntityType="ExamManagerModel.Subject" Width="1.5" PointX="0.75" PointY="2.875" />
+        <EntityTypeShape EntityType="ExamManagerModel.sysdiagram" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="ExamManagerModel.User" Width="1.5" PointX="5.25" PointY="7.5" />
+        <AssociationConnector Association="ExamManagerModel.FK__Answer__QuizId__1A14E395" />
+        <AssociationConnector Association="ExamManagerModel.FK__ExamInfo__QuizLi__1CF15040" />
+        <AssociationConnector Association="ExamManagerModel.FK__Quiz__Content__173876EA" />
+        <AssociationConnector Association="ExamManagerModel.FK__QuizList__NameLi__145C0A3F" />
+        <EntityTypeShape EntityType="ExamManagerModel.UserExam" Width="1.5" PointX="7.5" PointY="6.125" />
+        <AssociationConnector Association="ExamManagerModel.FK__UserExam__ExamIn__20C1E124" />
+        <AssociationConnector Association="ExamManagerModel.FK__UserExam__UserId__1FCDBCEB" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

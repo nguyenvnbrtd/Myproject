@@ -1,0 +1,79 @@
+﻿<Window x:Class="Timer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Timer"
+       
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    TextElement.FontWeight="Regular"
+    TextElement.FontSize="13"
+    TextOptions.TextFormattingMode="Ideal"
+    TextOptions.TextRenderingMode="Auto"
+    Background="{DynamicResource MaterialDesignPaper}"
+    FontFamily="{DynamicResource MaterialDesignFont}"
+    
+        WindowStartupLocation="CenterScreen"
+        MouseDown="Window_MouseDown"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        x:Name="MainWD"
+        Title="MainWindow" Height="350" Width="300">
+    <Grid  Height="450" Width="300" >
+        <Button Width="40" Height="40" VerticalAlignment="Top" HorizontalAlignment="Center"
+                Background="#FFF18484" BorderBrush="{x:Null}" Click="Button_Click" Margin="126,33,134,0"  
+                ></Button>
+
+        <materialDesign:PackIcon Width="40" Height="40"
+                             VerticalAlignment="Top"
+                             HorizontalAlignment="Center"
+                             Kind="Close" Foreground="#DD5B5B5B"
+                                 MouseDown="PackIcon_MouseDown" Margin="126,34,134,0"
+                             ></materialDesign:PackIcon>
+
+        <Grid  Width="80" Height="80" Margin="63,219,157,151"  >
+            <Button Width="75" Height="75" Click="Button_Click_1">
+                <Button.Background>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FFD1D1D1" Offset="0.305"/>
+                        <GradientStop Color="#FF6E97E0" Offset="1"/>
+                    </RadialGradientBrush>
+                </Button.Background>
+            </Button>
+            <materialDesign:PackIcon  Width="75" Height="75" Kind="Play"   
+                                 x:Name="PlayIcon"
+                                 Foreground="#DD363A4D" VerticalAlignment="Stretch"  
+                                 MouseDown="PlayIcon_MouseDown" HorizontalAlignment="Stretch"    
+                                 />
+
+            <materialDesign:PackIcon Kind="Pause" Width="75" Height="75"  
+                                 x:Name="PauseIcon" Visibility="Hidden"
+                                 Foreground="#DD363A4D" MouseDown="PlayIcon_MouseDown"
+                                 ></materialDesign:PackIcon>
+        </Grid>
+
+        <Grid  Width="80" Height="80"   Margin="152,220,68,150" >
+            <Button Width="75" Height="75" Foreground="{x:Null}" Click="Button_Click_2">
+                <Button.Background>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FFE8AAAA" Offset="0.016"/>
+                        <GradientStop Color="#FFC56161" Offset="1"/>
+                    </RadialGradientBrush>
+                </Button.Background>
+            </Button>
+            <materialDesign:PackIcon Kind="Stop" Width="75" Height="75"  
+                                 x:Name="StopIcon"
+                                  Foreground="#DD363A4D"  MouseDown="StopIcon_MouseDown" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                 ></materialDesign:PackIcon>
+
+        </Grid>
+
+        <TextBlock FontSize="30" Text="{Binding Sec}" Height="50" TextAlignment="Right" Margin="70,128,157,272"/>
+        <TextBlock FontSize="30" Height="50" Margin="142,128,85,272">.</TextBlock>
+        <TextBlock FontSize="30" Text="{Binding Mil}" Height="50" TextAlignment="Left" Margin="151,128,76,272"/>
+        <ProgressBar x:Name="TimerBar" Minimum="0" Maximum="10000" Height="10" Margin="20,178,30,262" RenderTransformOrigin="0.5,0.5">
+
+        </ProgressBar>
+    </Grid>
+</Window>
